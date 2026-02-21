@@ -8,4 +8,7 @@ GitHub is not allowing files that exceed 25mb, the gui.exe size is 36mb
 This is the gdrive link to the gui.exe
 https://drive.google.com/file/d/10yIYJ3hFhbV8dAKDzypLghY5H-npff6U/view?usp=sharing
 
+
 make sure to put the gui.exe to this folder so it will run properly
+
+Thank you.
