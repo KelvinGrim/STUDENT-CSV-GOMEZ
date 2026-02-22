@@ -11,7 +11,6 @@ PROGRAM_HEADERS = ["Code", "Name", "College"]
 COLLEGE_HEADERS = ["Code", "Name"]
 
 
-# ================= FILE SETUP =================
 def ensure_file(file, headers):
     if not os.path.exists(file):
         with open(file, "w", newline="", encoding="utf-8") as f:
@@ -23,10 +22,9 @@ ensure_file(PROGRAM_FILE, PROGRAM_HEADERS)
 ensure_file(COLLEGE_FILE, COLLEGE_HEADERS)
 
 
-# ================= CSV HELPERS =================
 def read_csv(file):
     with open(file, newline="", encoding="utf-8") as f:
-        return list(csv.reader(f))[1:]  # skip header
+        return list(csv.reader(f))[1:] 
 
 
 def write_csv(file, rows):
@@ -42,8 +40,6 @@ def write_csv(file, rows):
         w.writerow(headers)
         w.writerows(rows)
 
-
-# ================= VALIDATION =================
 def valid_id(sid):
     return bool(re.fullmatch(r"\d{4}-\d{4}", sid))
 
@@ -63,7 +59,6 @@ def gender_exists(gender):
     return gender.lower() in ALLOWED_GENDERS
 
 
-# ================= STUDENT CRUD =================
 def add_student(data):
     if any(not d.strip() for d in data):
         return False, "All fields are required"
@@ -105,7 +100,7 @@ def update_student(index, data):
     if not gender_exists(data[5]):
         return False, "No Gender Selected"
 
-    # prevent duplicate ID except current row
+
     for i, row in enumerate(rows):
         if i != index and row[0] == data[0]:
             return False, "Student ID already exists"
@@ -126,7 +121,6 @@ def delete_student(index):
     return True, ""
 
 
-# ================= COLLEGE CRUD =================
 def add_college(data):
     if any(not d.strip() for d in data):
         return False, "All fields are required"
@@ -141,7 +135,6 @@ def add_college(data):
     return True, ""
 
 
-# ================= PROGRAM CRUD =================
 def add_program(data):
     if any(not d.strip() for d in data):
         return False, "All fields are required"
